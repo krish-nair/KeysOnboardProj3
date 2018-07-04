@@ -164,10 +164,15 @@
     <Compile Include="Migrations\201807042351024_AddStoreTbl.Designer.cs">
       <DependentUpon>201807042351024_AddStoreTbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807042354340_AddProductSoldTbl.cs" />
+    <Compile Include="Migrations\201807042354340_AddProductSoldTbl.Designer.cs">
+      <DependentUpon>201807042354340_AddProductSoldTbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\KnockoutDbContext.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductSold.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807042351024_AddStoreTbl.resx">
       <DependentUpon>201807042351024_AddStoreTbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807042354340_AddProductSoldTbl.resx">
+      <DependentUpon>201807042354340_AddProductSoldTbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
