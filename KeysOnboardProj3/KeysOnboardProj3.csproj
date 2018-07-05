@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JsonResultExtensionController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductSoldsController.cs" />
     <Compile Include="Controllers\StoresController.cs" />
@@ -178,6 +179,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\JsonResultExtension.cs" />
     <Compile Include="Models\KnockoutDbContext.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductSold.cs" />
