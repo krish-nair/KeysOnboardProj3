@@ -13,5 +13,7 @@ namespace KeysOnboardProj3.Models
         public System.Data.Entity.DbSet<KeysOnboardProj3.Models.Product> Products { get; set; }
 
         public System.Data.Entity.DbSet<KeysOnboardProj3.Models.Store> Stores { get; set; }
+
+        public System.Data.Entity.DbSet<KeysOnboardProj3.Models.ProductSold> ProductSolds { get; set; }
     }
 }
