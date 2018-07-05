@@ -181,6 +181,14 @@
     <Compile Include="Migrations\201807050112183_AddJsonResult.Designer.cs">
       <DependentUpon>201807050112183_AddJsonResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807050923461_AddStoreTbl1.cs" />
+    <Compile Include="Migrations\201807050923461_AddStoreTbl1.Designer.cs">
+      <DependentUpon>201807050923461_AddStoreTbl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807050933372_AddProductSoldTbl1.cs" />
+    <Compile Include="Migrations\201807050933372_AddProductSoldTbl1.Designer.cs">
+      <DependentUpon>201807050933372_AddProductSoldTbl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\JsonResultExtension.cs" />
@@ -276,6 +284,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807050112183_AddJsonResult.resx">
       <DependentUpon>201807050112183_AddJsonResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807050923461_AddStoreTbl1.resx">
+      <DependentUpon>201807050923461_AddStoreTbl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807050933372_AddProductSoldTbl1.resx">
+      <DependentUpon>201807050933372_AddProductSoldTbl1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

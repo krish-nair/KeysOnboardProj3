@@ -6,14 +6,14 @@
 
 function StoreViewModel(data) {
     self = this;
+
     self.Id = data.Id;
     self.Name = ko.observable(data.Name).extend({
         required: {
             params: true,
-            message: "Please input store's name!"
+            message: "Please input store name!"
         }
     });
-
     self.Address = ko.observable(data.Address).extend({
         required: {
             params: true,
@@ -27,7 +27,8 @@ function StoreViewModel(data) {
         return self.ModelErrors().length == 0;
     });
 
-};
+}
+
 function StoresViewModel() {
 
     var self = this;
@@ -47,19 +48,13 @@ function StoresViewModel() {
         }
     });
 
+    //Show create window
     self.showAddUI = function () {
         self.Store(new StoreViewModel(nullStore));
-    }
-
-    self.showEditUI = function (store) {
-        self.Store(new StoreViewModel(store));
     };
 
-    self.showDeleteUI = function (store) {
-        self.Store(store);
-    };
-
-    //Add New Item
+       
+    //Add New Store
     self.create = function () {
         if (self.Store().Name() != "" &&
             self.Store().Address() != "") {
@@ -69,6 +64,12 @@ function StoresViewModel() {
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
                 data: ko.toJSON(self.Store),
+                //error: function (err) {
+                //    //alert(err.status + " - " + err.statusText);
+                //    console.log(err.status + " - " + err.statusText);
+                //    console.log(err.responseText);
+
+                //},
                 success: function (data) {
                     self.Stores.push(data);
                     self.Store(new StoreViewModel(nullStore));
@@ -83,7 +84,13 @@ function StoresViewModel() {
         }
     }
 
-    // Update product details
+     //Edit a store 
+    self.showEditUI = function (store) {
+        self.Store(new StoreViewModel(store));
+    };
+
+    
+    // Update Store details
     self.update = function () {
         if (self.Store().Name() != "" &&
             self.Store().Address() != "") {
@@ -108,6 +115,10 @@ function StoresViewModel() {
             // alert('Please Enter All the Values !!');
         }
     }
+
+    self.showDeleteUI = function (store) {
+        self.Store(store);
+    };
 
     // Delete Store details
     self.delete = function (store) {

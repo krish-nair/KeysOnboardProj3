@@ -16,7 +16,7 @@ namespace KeysOnboardProj3
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Customers", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Products", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
