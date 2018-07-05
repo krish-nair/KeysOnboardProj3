@@ -8,12 +8,9 @@ namespace KeysOnboardProj3.Models
 {
     public class KnockoutDbContext : DbContext
     {
-        public System.Data.Entity.DbSet<KeysOnboardProj3.Models.Customer> Customers { get; set; }
-
-        public System.Data.Entity.DbSet<KeysOnboardProj3.Models.Product> Products { get; set; }
-
-        public System.Data.Entity.DbSet<KeysOnboardProj3.Models.Store> Stores { get; set; }
-
-        public System.Data.Entity.DbSet<KeysOnboardProj3.Models.ProductSold> ProductSolds { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<ProductSold> ProductSolds { get; set; }
     }
 }

@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201807042354340_AddProductSoldTbl.Designer.cs">
       <DependentUpon>201807042354340_AddProductSoldTbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807050029349_EditDbContext.cs" />
+    <Compile Include="Migrations\201807050029349_EditDbContext.Designer.cs">
+      <DependentUpon>201807050029349_EditDbContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\KnockoutDbContext.cs" />
@@ -272,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807042354340_AddProductSoldTbl.resx">
       <DependentUpon>201807042354340_AddProductSoldTbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807050029349_EditDbContext.resx">
+      <DependentUpon>201807050029349_EditDbContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
