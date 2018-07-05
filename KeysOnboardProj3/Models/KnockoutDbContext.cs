@@ -8,5 +8,6 @@ namespace KeysOnboardProj3.Models
 {
     public class KnockoutDbContext : DbContext
     {
+        public System.Data.Entity.DbSet<KeysOnboardProj3.Models.Customer> Customers { get; set; }
     }
 }
