@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201807050029349_EditDbContext.Designer.cs">
       <DependentUpon>201807050029349_EditDbContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807050112183_AddJsonResult.cs" />
+    <Compile Include="Migrations\201807050112183_AddJsonResult.Designer.cs">
+      <DependentUpon>201807050112183_AddJsonResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\JsonResultExtension.cs" />
@@ -193,6 +197,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\App\Customer.js" />
+    <Content Include="Scripts\App\Product.js" />
+    <Content Include="Scripts\App\ProductSold.js" />
+    <Content Include="Scripts\App\Store.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -228,25 +236,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Stores\Create.cshtml" />
-    <Content Include="Views\Stores\Delete.cshtml" />
-    <Content Include="Views\Stores\Details.cshtml" />
-    <Content Include="Views\Stores\Edit.cshtml" />
     <Content Include="Views\Stores\Index.cshtml" />
-    <Content Include="Views\ProductSolds\Create.cshtml" />
-    <Content Include="Views\ProductSolds\Delete.cshtml" />
-    <Content Include="Views\ProductSolds\Details.cshtml" />
-    <Content Include="Views\ProductSolds\Edit.cshtml" />
     <Content Include="Views\ProductSolds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807050029349_EditDbContext.resx">
       <DependentUpon>201807050029349_EditDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807050112183_AddJsonResult.resx">
+      <DependentUpon>201807050112183_AddJsonResult.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
