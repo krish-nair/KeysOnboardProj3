@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 using KeysOnboardProj3.Models;
 
 namespace KeysOnboardProj3.Controllers
@@ -15,7 +10,7 @@ namespace KeysOnboardProj3.Controllers
     {
         private KnockoutDbContext db = new KnockoutDbContext();
 
-        // GET: ProductSolds
+        // GET: Sales List
         public ActionResult Index()
         {
             return View();
@@ -24,24 +19,12 @@ namespace KeysOnboardProj3.Controllers
         [HttpGet]
         public JsonResultExtension GetAllProductSolds()
         {
-            //var productSolds = db.ProductSolds.Select(x => new
-            //{
-            //    Id = x.Id,
-            //    ProductId = x.ProductId,
-            //    CustomerId = x.CustomerId,
-            //    SroreId = x.StoreId,
-            //    Product = x.Product.Name,
-            //    Customer = x.Customer.Name,                              
-            //    Store = x.Store.Name,
-            //    DateSold = x.DateSold
-            //}).ToList();
             var productSolds = db.ProductSolds.Include(p => p.Customer).Include(p => p.Product).Include(p => p.Store);
-            //var jsonResult = JsonConvert.SerializeObject(productSolds);
-
+            
             return new JsonResultExtension(productSolds, "dd/MM/yyyy");
         }
 
-
+        // Code to save items into database
         [HttpPost]
         public JsonResult AddProductSold(ProductSold item)
         {
@@ -50,7 +33,6 @@ namespace KeysOnboardProj3.Controllers
                 throw new ArgumentNullException("item");
             }
 
-            // TO DO : Code to save record into database
             db.ProductSolds.Add(item);
             db.SaveChanges();
             return new JsonResultExtension(item, "dd/MM/yyyy"); ;

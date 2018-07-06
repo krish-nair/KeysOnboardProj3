@@ -11,13 +11,13 @@ function ProductViewModel(data) {
     self.Name = ko.observable(data.Name).extend({
         required: {
             params: true,
-            message: "Please input product name!"
+            message: "Please Enter Product Name!"
         }
     });
     self.Price = ko.observable(data.Price).extend({
         required: {
             params: true,
-            message: "Please input product price!"
+            message: "Please Enter Product Price!"
         }
     });
 
@@ -72,7 +72,7 @@ function ProductsViewModel() {
                 });
         }
         else {
-            alert('Please Enter All the Values !!');
+            alert('All the values are required !!');
         }
     }
 

@@ -10,14 +10,14 @@ function CustomerViewModel(data) {
     self.Name = ko.observable(data.Name).extend({
         required: {
             params: true,
-            message: "Please input customer's name!"
+            message: "Please Enter Customer Name!"
         }
     });
 
     self.Address = ko.observable(data.Address).extend({
         required: {
             params: true,
-            message: "Please input customer's address!"
+            message: "Please Enter Customer Address!"
         }
     });
 
@@ -80,7 +80,7 @@ function CustomersViewModel() {
                 });
         }
         else {
-            alert('Please Enter All the Values !!');
+            alert('All the values are required !!');
         }
     }
 
