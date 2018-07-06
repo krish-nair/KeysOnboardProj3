@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using KeysOnboardProj3.Models;
 
 namespace KeysOnboardProj3.Controllers
@@ -17,115 +18,87 @@ namespace KeysOnboardProj3.Controllers
         // GET: ProductSolds
         public ActionResult Index()
         {
-            var productSolds = db.ProductSolds.Include(p => p.Customer).Include(p => p.Product).Include(p => p.Store);
-            return View(productSolds.ToList());
-        }
-
-        // GET: ProductSolds/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProductSold productSold = db.ProductSolds.Find(id);
-            if (productSold == null)
-            {
-                return HttpNotFound();
-            }
-            return View(productSold);
-        }
-
-        // GET: ProductSolds/Create
-        public ActionResult Create()
-        {
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name");
-            ViewBag.StoreId = new SelectList(db.Stores, "Id", "Name");
             return View();
         }
 
-        // POST: ProductSolds/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpGet]
+        public JsonResultExtension GetAllProductSolds()
+        {
+            //var productSolds = db.ProductSolds.Select(x => new
+            //{
+            //    Id = x.Id,
+            //    ProductId = x.ProductId,
+            //    CustomerId = x.CustomerId,
+            //    SroreId = x.StoreId,
+            //    Product = x.Product.Name,
+            //    Customer = x.Customer.Name,                              
+            //    Store = x.Store.Name,
+            //    DateSold = x.DateSold
+            //}).ToList();
+            var productSolds = db.ProductSolds.Include(p => p.Customer).Include(p => p.Product).Include(p => p.Store);
+            //var jsonResult = JsonConvert.SerializeObject(productSolds);
+
+            return new JsonResultExtension(productSolds, "dd/MM/yyyy");
+        }
+
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProductId,CustomerId,StoreId,DateSold")] ProductSold productSold)
+        public JsonResult AddProductSold(ProductSold item)
         {
-            if (ModelState.IsValid)
+            if (item == null)
             {
-                db.ProductSolds.Add(productSold);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                throw new ArgumentNullException("item");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", productSold.CustomerId);
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", productSold.ProductId);
-            ViewBag.StoreId = new SelectList(db.Stores, "Id", "Name", productSold.StoreId);
-            return View(productSold);
-        }
-
-        // GET: ProductSolds/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProductSold productSold = db.ProductSolds.Find(id);
-            if (productSold == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", productSold.CustomerId);
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", productSold.ProductId);
-            ViewBag.StoreId = new SelectList(db.Stores, "Id", "Name", productSold.StoreId);
-            return View(productSold);
-        }
-
-        // POST: ProductSolds/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductId,CustomerId,StoreId,DateSold")] ProductSold productSold)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(productSold).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", productSold.CustomerId);
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", productSold.ProductId);
-            ViewBag.StoreId = new SelectList(db.Stores, "Id", "Name", productSold.StoreId);
-            return View(productSold);
-        }
-
-        // GET: ProductSolds/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProductSold productSold = db.ProductSolds.Find(id);
-            if (productSold == null)
-            {
-                return HttpNotFound();
-            }
-            return View(productSold);
-        }
-
-        // POST: ProductSolds/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            ProductSold productSold = db.ProductSolds.Find(id);
-            db.ProductSolds.Remove(productSold);
+            // TO DO : Code to save record into database
+            db.ProductSolds.Add(item);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return new JsonResultExtension(item, "dd/MM/yyyy"); ;
+        }
+
+        [HttpPost]
+        public JsonResult EditProductSold(ProductSold item)
+        {
+            try
+            {
+                if (item == null)
+                {
+                    throw new ArgumentNullException("item");
+                }
+
+                var productSold = db.ProductSolds.Single(a => a.Id == item.Id);
+
+                productSold.ProductId = item.ProductId;
+                productSold.CustomerId = item.CustomerId;
+                productSold.StoreId = item.StoreId;
+                productSold.DateSold = item.DateSold;
+
+
+                db.SaveChanges();
+            }
+            catch
+            {
+                return Json(null);
+            }
+            return new JsonResultExtension(db.ProductSolds, "dd/MM/yyyy");
+
+        }
+
+        [HttpPost]
+        public JsonResult DeleteProductSold(int id)
+        {
+            try
+            {
+                ProductSold productSold = db.ProductSolds.Find(id);
+                db.ProductSolds.Remove(productSold);
+                db.SaveChanges();
+            }
+            catch
+            {
+                return Json(new { Status = false }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { Status = true }, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

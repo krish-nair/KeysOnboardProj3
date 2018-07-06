@@ -17,6 +17,9 @@ namespace KeysOnboardProj3
             bundles.Add(new ScriptBundle("~/bundles/jqueryUI").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
+            bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
+                        "~/content/jquery-ui.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-{version}.js"));
 

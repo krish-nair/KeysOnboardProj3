@@ -101,6 +101,7 @@ function ProductSoldsViewModel() {
 
         var tmpDate = self.ProductSold().DateSold();
         self.ProductSold().DateSold(changeDateFormat(tmpDate));
+        alert(ko.toJSON(self.ProductSold));
 
         $.ajax({
             url: 'ProductSolds/AddProductSold',
