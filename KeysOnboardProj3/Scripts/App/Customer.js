@@ -21,11 +21,11 @@ function CustomerViewModel(data) {
         }
     });
 
-    self.ModelErrors = ko.validation.group(self);
-    self.IsValid = ko.computed(function () {
-        self.ModelErrors.showAllMessages();
-        return self.ModelErrors().length == 0;
-    });
+    //self.ModelErrors = ko.validation.group(self);
+    //self.IsValid = ko.computed(function () {
+    //    self.ModelErrors.showAllMessages();
+    //    return self.ModelErrors().length == 0;
+    //});
 
 };
 
@@ -62,8 +62,8 @@ function CustomersViewModel() {
 
     //Add new customer
     self.create = function () {
-        if (self.Customer().Name() != "" &&
-            self.Customer().Address() != "") {
+        if (self.Customer().Name() != null &&
+            self.Customer().Address() != null) {
             $.ajax({
                 url: 'Customers/AddCustomer',
                 cache: false,
@@ -73,6 +73,7 @@ function CustomersViewModel() {
                 success: function (data) {
                     self.Customers.push(data);
                     self.Customer(new CustomerViewModel(nullCustomer));
+                    $("#myCreateModal").modal("hide")
                 }
             }).fail(
                 function (xhr, textStatus, err) {

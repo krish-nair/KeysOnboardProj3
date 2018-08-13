@@ -21,11 +21,11 @@ function ProductViewModel(data) {
         }
     });
 
-    self.ModelErrors = ko.validation.group(self);
-    self.IsValid = ko.computed(function () {
-        self.ModelErrors.showAllMessages();
-        return self.ModelErrors().length == 0;
-    });
+    //self.ModelErrors = ko.validation.group(self);
+    //self.IsValid = ko.computed(function () {
+    //    self.ModelErrors.showAllMessages();
+    //    return self.ModelErrors().length == 0;
+    //});
 }
 function ProductsViewModel() {
 
@@ -65,6 +65,7 @@ function ProductsViewModel() {
                 success: function (data) {
                     self.Products.push(data);
                     self.Product(new ProductViewModel(nullProduct));
+                    $('#myCreateModal').modal('hide');
                 }
             }).fail(
                 function (xhr, textStatus, err) {
@@ -74,7 +75,7 @@ function ProductsViewModel() {
         else {
             alert('All the values are required !!');
         }
-    }
+    };
 
     //Show edit window
     self.showEditUI = function (product) {

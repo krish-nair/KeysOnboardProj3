@@ -21,11 +21,12 @@ function StoreViewModel(data) {
         }
     });
 
-    self.ModelErrors = ko.validation.group(self);
-    self.IsValid = ko.computed(function () {
-        self.ModelErrors.showAllMessages();
-        return self.ModelErrors().length == 0;
-    });
+    //self.ModelErrors = ko.validation.group(self);
+
+    //self.IsValid = ko.computed(function () {
+    //    self.ModelErrors.showAllMessages();
+    //    return self.ModelErrors().length == 0;
+    //});
 
 }
 
@@ -51,9 +52,10 @@ function StoresViewModel() {
     //Show create window
     self.showAddUI = function () {
         self.Store(new StoreViewModel(nullStore));
+        $(".myValid").hide();
     };
 
-       
+
     //Add New Store
     self.create = function () {
         if (self.Store().Name() != "" &&
@@ -71,25 +73,34 @@ function StoresViewModel() {
 
                 //},
                 success: function (data) {
-                    self.Stores.push(data);
+
                     self.Store(new StoreViewModel(nullStore));
+
+                    self.Stores.push(data);
+
+                    $("#myCreateModal").modal("hide");
                 }
             }).fail(
                 function (xhr, textStatus, err) {
                     alert(err);
                 });
         }
-        else {
-            alert('All the values are required !!');
+        else if (self.Store().Name() == "" && self.Store().Address() == "") {
+            $(".myValid").show();
         }
+        else {
+            $(".myValid").hide();
+            alert('All the values are required !!');
+
+             }
     }
 
-     //Edit a store 
+    //Edit a store 
     self.showEditUI = function (store) {
         self.Store(new StoreViewModel(store));
     };
 
-    
+
     // Update Store details
     self.update = function () {
         if (self.Store().Name() != "" &&

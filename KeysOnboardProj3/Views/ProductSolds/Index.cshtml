@@ -1,5 +1,7 @@
 ﻿<h2>Sales List</h2>
 
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/dot-luv/jquery-ui.css" rel="stylesheet" />
+
 <p>
     <a id="btnCreate" href="#myCreateModal" class="btn btn-success" data-toggle="modal" data-bind="click: $root.showAddUI">Create New</a>
 </p>
@@ -156,6 +158,15 @@
     </div>
 </div>
 
+
 @section scripts{
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/App/ProductSold.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#DateSold").datepicker();
+        });
+    </script>
 }
