@@ -39,31 +39,36 @@
             </div>
             <div class="modal-body">
                 <div id="modal-content" data-bind="with: ProductSold">
-                    <div class="form-group">
-                        <label for="nameProduct" class="col-sm-4">Product Name</label>
-                        <select class="form-control" data-bind="options: $parent.ProductList,
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true, "")
+                        <div class="form-group">
+                            <label for="nameProduct" class="col-sm-4">Product Name</label>
+                            <select class="form-control" data-bind="options: $parent.ProductList,
                                            optionsText:'Name',
                                            value: $parent.SelectedProduct"></select>
-                    </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="nameCustomer" class="col-sm-4">Customer Name</label>
-                        <select class="form-control" data-bind="options: $parent.CustomerList,
+                        <div class="form-group">
+                            <label for="nameCustomer" class="col-sm-4">Customer Name</label>
+                            <select class="form-control" data-bind="options: $parent.CustomerList,
                                            optionsText:'Name',
                                            value: $parent.SelectedCustomer"></select>
-                    </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="nameStore" class="col-sm-4">Store Name</label>
-                        <select class="form-control" data-bind="options: $parent.StoreList,
+                        <div class="form-group">
+                            <label for="nameStore" class="col-sm-4">Store Name</label>
+                            <select class="form-control" data-bind="options: $parent.StoreList,
                                            optionsText:'Name',
                                            value: $parent.SelectedStore"></select>
-                    </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="dateSold" class="col-sm-4">Date Sold</label>
-                        <input class="form-control" id="createDatepicker" data-bind="value: DateSold" type="text" title="DateSold" />
-                    </div>
+                        <div class="form-group">
+                            <label for="dateSold" class="col-sm-4">Date Sold</label>
+                            <input class="form-control" id="createDatepicker" data-bind="value: DateSold" type="text" title="DateSold" />
+                        </div>
+                    }
+                    
 
                     <div class="modal-footer">
                         <button class="btn btn-success col-sm-offset-2" data-bind="click: $root.create">Save</button>
@@ -160,8 +165,7 @@
 
 
 @section scripts{
-    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    
     <script src="~/Scripts/App/ProductSold.js"></script>
 
     <script>

@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201807052329567_AddProductSoldTbl2.Designer.cs">
       <DependentUpon>201807052329567_AddProductSoldTbl2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808160008051_DataAnnotationsInCustomerModel.cs" />
+    <Compile Include="Migrations\201808160008051_DataAnnotationsInCustomerModel.Designer.cs">
+      <DependentUpon>201808160008051_DataAnnotationsInCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\JsonResultExtension.cs" />
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807052329567_AddProductSoldTbl2.resx">
       <DependentUpon>201807052329567_AddProductSoldTbl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808160008051_DataAnnotationsInCustomerModel.resx">
+      <DependentUpon>201808160008051_DataAnnotationsInCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

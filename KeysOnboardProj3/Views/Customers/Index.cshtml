@@ -34,19 +34,24 @@
             </div>
             <div class="modal-body">
                 <div id="modal-content" data-bind="with: Customer">
-                    <div class="row">
-                        <label for="name" class="col-sm-2">Name</label>
-                        <input data-bind="value: Name, valueUpate: 'afterkeydown'" type="text" title="Name" />
-                    </div>
-                    <br />
-                    <div class="row">
-                        <label for="address" class="col-sm-2">Address</label>
-                        <input data-bind="value: Address, valueUpate: 'afterkeydown'" type="text" title="Address" />
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-success col-sm-offset-2" data-bind="click: $root.create">Save</button>
-                        <button class="btn btn-info" data-dismiss="modal">Close</button>
-                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true, "")
+                        <div class="row form-group">
+                            <label for="name" class="col-sm-2">Name</label>
+                            <input data-bind="value: Name, valueUpate: 'afterkeydown'" type="text" class="form-control" title="Name" />
+                        </div>
+                        <br />
+                        <div class="row form-group">
+                            <label for="address" class="col-sm-2">Address</label>
+                            <input data-bind="value: Address, valueUpate: 'afterkeydown'" type="text" class="form-control" title="Address" />
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-success col-sm-offset-2" data-bind="click: $root.create">Save</button>
+                            <button class="btn btn-info" data-dismiss="modal">Close</button>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
@@ -121,5 +126,5 @@
 </div>
 
 @section scripts{
-   @Scripts.Render("~/Scripts/App/Customer.js")
+    @Scripts.Render("~/Scripts/App/Customer.js")
 }

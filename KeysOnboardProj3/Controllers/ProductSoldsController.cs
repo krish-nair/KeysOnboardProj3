@@ -21,7 +21,7 @@ namespace KeysOnboardProj3.Controllers
         {
             var productSolds = db.ProductSolds.Include(p => p.Customer).Include(p => p.Product).Include(p => p.Store);
             
-            return new JsonResultExtension(productSolds, "dd/MM/yyyy");
+            return new JsonResultExtension(productSolds, "dd/MM/yy");
         }
 
         // Code to save items into database
@@ -35,7 +35,7 @@ namespace KeysOnboardProj3.Controllers
 
             db.ProductSolds.Add(item);
             db.SaveChanges();
-            return new JsonResultExtension(item, "dd/MM/yyyy"); ;
+            return new JsonResultExtension(item, "dd/MM/yy"); ;
         }
 
         [HttpPost]
@@ -55,14 +55,13 @@ namespace KeysOnboardProj3.Controllers
                 productSold.StoreId = item.StoreId;
                 productSold.DateSold = item.DateSold;
 
-
                 db.SaveChanges();
             }
             catch
             {
                 return Json(null);
             }
-            return new JsonResultExtension(db.ProductSolds, "dd/MM/yyyy");
+            return new JsonResultExtension(db.ProductSolds, "dd/MM/yy");
 
         }
 

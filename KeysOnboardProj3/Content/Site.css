@@ -23,7 +23,9 @@ textarea {
     max-width: 280px;
 }
 
-.validationMessage {
+.errorStyle {
+    background-color: #ffd800;
     color: red;
-}
+    margin-left: 100px;
+} 
 

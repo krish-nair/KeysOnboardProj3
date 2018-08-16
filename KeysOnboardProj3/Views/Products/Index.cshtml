@@ -36,21 +36,27 @@
             </div>
             <div class="modal-body">
                 <div id="modal-content" data-bind="with: Product">
-                    <div class="row">
-                        <label for="name" class="col-sm-2">Name</label>
-                        <input data-bind="value: Name, valueUpdate: 'afterkeydown'" type="text" title="Name" />
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true, "")
 
-                    </div>
-                    <br />
-                    <div class="row">
-                        <label for="price" class="col-sm-2">Price</label>
-                        <input data-bind="value: Price, valueUpdate: 'afterkeydown'" type="text" title="Price" />
+                        <div class="row form-group">
+                            <label for="name" class="col-sm-2">Name</label>
+                            <input data-bind="value: Name, valueUpdate: 'afterkeydown'" type="text" class="form-control" title="Name" />
 
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-success col-sm-offset-2" data-bind="click: $root.create">Save</button>
-                        <button class="btn btn-info" data-dismiss="modal" data-bind="click: $root.reset">Close</button>
-                    </div>
+                        </div>
+                        <br />
+                        <div class="row form-group">
+                            <label for="price" class="col-sm-2">Price</label>
+                            <input data-bind="value: Price, valueUpdate: 'afterkeydown'" type="text" class="form-control" title="Price" />
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-success col-sm-offset-2" data-bind="click: $root.create">Save</button>
+                            <button class="btn btn-info" data-dismiss="modal" data-bind="click: $root.reset">Close</button>
+                        </div>
+                    }
+
 
                 </div>
             </div>
