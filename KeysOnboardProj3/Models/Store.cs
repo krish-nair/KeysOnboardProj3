@@ -17,6 +17,8 @@ namespace KeysOnboardProj3.Models
         [RegularExpression(@"^[a-zA-Z0-9'' ']+$", ErrorMessage = "Special character should not be entered")]
         public virtual string Address { get; set; }
 
+        public IEnumerable<ProductSold> ProductSold { get; set; }
+
 
     }
 }
