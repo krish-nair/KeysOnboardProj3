@@ -137,10 +137,10 @@ $(document).ready(function () {
             self.ProductSold().Store = self.SelectedStore();
 
 
-            //console.log(self.ProductSold().DateSold);
+            console.log(self.ProductSold().DateSold);
             var tmpDate = self.ProductSold().DateSold;
             self.ProductSold().DateSold = changeDateFormat(tmpDate);
-            //console.log(self.ProductSold().DateSold);
+            console.log(self.ProductSold().DateSold);
 
             $.ajax({
                 url: 'ProductSolds/EditProductSold',
@@ -151,10 +151,10 @@ $(document).ready(function () {
                 success: function (data) {
                     self.ProductSolds.removeAll();
                     self.ProductSolds(data);
-                    //self.SelectedProduct(self.OrigProduct());
-                    //self.SelectedCustomer(self.OrigCustomer());
-                    //self.SelectedStore(self.OrigStore());
-                    //console.log(self.SelectedCustomer().Name);
+                    self.SelectedProduct(self.OrigProduct());
+                    self.SelectedCustomer(self.OrigCustomer());
+                    self.SelectedStore(self.OrigStore());
+                    console.log(self.SelectedCustomer().Name);
                     self.ProductSold(new ProductSoldViewModel(nullProductSold));
 
                     $('#myEditModal').modal('hide');

@@ -16,6 +16,7 @@ namespace KeysOnboardProj3.Models
         [Required(ErrorMessage = "Product price is required")]
         public virtual decimal Price { get; set; }
 
+        public IEnumerable<ProductSold> ProductSold { get; set; }
 
     }
 }

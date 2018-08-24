@@ -34,8 +34,9 @@ namespace KeysOnboardProj3.Controllers
             }
 
             db.ProductSolds.Add(item);
+            Console.WriteLine(item);
             db.SaveChanges();
-            return new JsonResultExtension(item, "dd/MM/yy"); ;
+            return new JsonResultExtension(item, "dd/MM/yy");
         }
 
         [HttpPost]
